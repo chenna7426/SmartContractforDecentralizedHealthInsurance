@@ -1,0 +1,26 @@
+.policies-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+  padding: 2rem 1.5rem 3rem;
+}
+
+.policies-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.policies-inner h1 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.policies-inner p {
+  color: #475569;
+}
+
+.policies-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

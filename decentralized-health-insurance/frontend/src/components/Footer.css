@@ -1,0 +1,130 @@
+/* ─── Footer ─────────────────────────────────────────────────── */
+.footer {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: auto;
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}
+
+.footer__brand {}
+
+.footer__brand-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .65rem;
+}
+
+.footer__brand-name span {
+  font-size: 1.2rem;
+}
+
+.footer__brand-desc {
+  font-size: .87rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  max-width: 280px;
+}
+
+.footer__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.footer__badge {
+  padding: .3rem .75rem;
+  border-radius: 9999px;
+  font-size: .72rem;
+  font-weight: 600;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.1);
+  letter-spacing: .04em;
+}
+
+.footer__col-title {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 1rem;
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.footer__links a {
+  font-size: .88rem;
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+  transition: color .18s ease;
+}
+
+.footer__links a:hover {
+  color: #60a5fa;
+}
+
+.footer__bottom {
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__copy {
+  font-size: .8rem;
+  color: rgba(255,255,255,.35);
+}
+
+.footer__tech-stack {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.footer__tech {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .25rem .65rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,.06);
+  font-size: .72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+}

@@ -1,0 +1,214 @@
+/* ─── ClaimList ──────────────────────────────────────────────── */
+.claim-list-shell {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.claim-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.claim-list-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.claim-list-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem 1.25rem;
+  border-radius: 9999px;
+  font-size: .85rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.claim-list-refresh:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.claim-list-refresh:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Empty / Loading States */
+.claim-list-empty,
+.claim-list-loading {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 1px dashed #cbd5e1;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Claim Cards */
+.claim-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.claim-list-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.claim-list-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(15,23,42,.05);
+}
+
+.claim-list-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.claim-list-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.claim-list-card-subtitle {
+  font-size: .85rem;
+  color: #64748b;
+  margin-top: .2rem;
+}
+
+.claim-list-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem 1rem;
+  font-size: .9rem;
+  color: #334155;
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.claim-list-meta span {
+  display: block;
+  font-size: .75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .2rem;
+}
+
+.claim-history-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: transparent;
+  border: 0;
+  color: #2563eb;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  padding: 0;
+  transition: color .2s ease;
+}
+
+.claim-history-toggle:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* History block */
+.claim-list-history {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #cbd5e1;
+  animation: fadeUp .3s ease both;
+}
+
+.claim-list-history-title {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 1rem;
+}
+
+.claim-list-history-items {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.claim-list-history-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+}
+
+.claim-list-history-item::before {
+  content: '';
+  position: absolute;
+  left: -1px; top: 1rem; bottom: 1rem;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+}
+
+.claim-list-history-item--pending::before { background: #f59e0b; }
+.claim-list-history-item--approved::before { background: #10b981; }
+.claim-list-history-item--rejected::before { background: #ef4444; }
+
+.claim-list-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .4rem;
+}
+
+.claim-list-history-status {
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.claim-list-history-date {
+  font-size: .8rem;
+  color: #94a3b8;
+}
+
+.claim-list-history-hash {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: .75rem;
+  color: #64748b;
+  word-break: break-all;
+  background: #f1f5f9;
+  padding: .3rem .5rem;
+  border-radius: 6px;
+  margin-top: .5rem;
+}

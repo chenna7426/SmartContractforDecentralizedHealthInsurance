@@ -1,0 +1,49 @@
+.protected-route-shell {
+  min-height: 55vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.protected-route-card {
+  max-width: 560px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+}
+
+.protected-route-card h2 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.protected-route-card p {
+  color: #475569;
+}
+
+.protected-route-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.protected-route-actions a,
+.protected-route-actions button {
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+}
+
+.protected-route-actions a {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.protected-route-actions button {
+  background: #0f172a;
+  color: #fff;
+}

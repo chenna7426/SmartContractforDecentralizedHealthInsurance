@@ -1,0 +1,163 @@
+/* ─── ClaimForm ──────────────────────────────────────────────── */
+.claim-form-shell {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.claim-form-shell__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: .35rem;
+}
+
+.claim-form-shell__desc {
+  font-size: .95rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* Wallet Banner */
+.claim-wallet-note {
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  border: 1px solid #c7d2fe;
+}
+
+.claim-wallet-note__icon {
+  font-size: 1.25rem;
+}
+
+.claim-wallet-note__content h4 {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: .2rem;
+}
+
+.claim-wallet-note__content p {
+  font-size: .85rem;
+  color: #3730a3;
+  line-height: 1.5;
+}
+
+.claim-wallet-note__content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(255,255,255,.5);
+  padding: .15rem .4rem;
+  border-radius: 6px;
+  font-size: .8rem;
+  color: #1d4ed8;
+  word-break: break-all;
+}
+
+/* Form Layout */
+.claim-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .claim-form { grid-template-columns: 1fr; }
+}
+
+.claim-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+
+.claim-form-field--full {
+  grid-column: 1 / -1;
+}
+
+.claim-label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.claim-input,
+.claim-textarea,
+.claim-select {
+  width: 100%;
+  padding: .85rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: .95rem;
+  color: #0f172a;
+  background: #f8fafc;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  outline: none;
+}
+
+.claim-input:focus,
+.claim-textarea:focus,
+.claim-select:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+
+.claim-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.claim-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit Button */
+.claim-submit-btn {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(37,99,235,.3);
+  transition: box-shadow .2s ease, transform .15s ease;
+  margin-top: .5rem;
+}
+
+.claim-submit-btn:hover {
+  box-shadow: 0 12px 32px rgba(37,99,235,.4);
+  transform: translateY(-1px);
+}
+
+.claim-submit-btn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.claim-form-disclaimer {
+  grid-column: 1 / -1;
+  font-size: .85rem;
+  color: #64748b;
+  text-align: center;
+  margin-top: .5rem;
+}

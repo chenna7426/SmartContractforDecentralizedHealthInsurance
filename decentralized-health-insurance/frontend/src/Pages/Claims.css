@@ -1,0 +1,60 @@
+.claims-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+  padding: 2rem 1.5rem 3rem;
+}
+
+.claims-page-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.claims-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.claims-page-header h1 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.claims-page-header p {
+  color: #475569;
+}
+
+.claims-layout {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.claims-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.claims-status-card,
+.claims-tip-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.claims-status-card h2,
+.claims-tip-card h2 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+.claims-status-card ul,
+.claims-tip-card ul {
+  color: #475569;
+  padding-left: 1rem;
+}
+
+@media (max-width: 960px) {
+  .claims-layout {
+    grid-template-columns: 1fr;
+  }
+}

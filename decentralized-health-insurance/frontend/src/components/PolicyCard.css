@@ -1,0 +1,42 @@
+.policy-card {
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid #dbeafe;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.07);
+}
+
+.policy-card h3 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.policy-card p {
+  color: #475569;
+}
+
+.policy-meta {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.policy-tag {
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 0.35rem 0.75rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.policy-cta {
+  margin-top: 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0f172a, #1d4ed8);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+}
