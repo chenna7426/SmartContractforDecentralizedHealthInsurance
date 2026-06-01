@@ -11,10 +11,11 @@ app = Flask(__name__)
 CORS(app)
 
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "Snehith7427",
-    "database": "health_insurance",
+    "host": os.getenv("DB_HOST", "localhost"),
+    "port": int(os.getenv("DB_PORT", 3306)),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.getenv("DB_PASSWORD", ""),
+    "database": os.getenv("DB_NAME", "health_insurance"),
     "cursorclass": pymysql.cursors.DictCursor,
 }
 

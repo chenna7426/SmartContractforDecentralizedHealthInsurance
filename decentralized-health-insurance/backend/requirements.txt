@@ -1,4 +1,6 @@
 Flask==3.1.0
 Flask-Cors==5.0.0
-PyMySQL==2.2.8
+PyMySQL==1.2.0
 bcrypt==4.2.1
+PyJWT==2.13.0
+gunicorn==26.0.0
