@@ -1,8 +1,10 @@
 /* ─── ClaimList ──────────────────────────────────────────────── */
 .claim-list-shell {
+  width: 100%;
+  min-width: 0;
   background: #fff;
   border-radius: 24px;
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
   border: 1px solid #e2e8f0;
 }
@@ -12,6 +14,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -69,7 +72,8 @@
 .claim-list-card {
   background: #fff;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  min-width: 0;
   border: 1px solid #e2e8f0;
   transition: box-shadow .2s ease, border-color .2s ease;
 }
@@ -84,6 +88,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 1.25rem;
 }
 
@@ -102,7 +107,7 @@
 
 .claim-list-meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
   gap: 1.25rem 1rem;
   font-size: .9rem;
   color: #334155;
@@ -189,6 +194,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
   margin-bottom: .4rem;
 }
 

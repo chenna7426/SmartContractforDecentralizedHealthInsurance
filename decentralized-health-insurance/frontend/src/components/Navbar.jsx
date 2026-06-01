@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
 import "./Navbar.css";
@@ -7,25 +7,32 @@ function Navbar({
   walletAddress = "",
   isConnected = false,
   onConnect,
-  onSwitchNetwork,
   authUser,
   onLogout,
   isConnecting = false,
-  networkName = "Unknown",
-  chainId = null,
-  networkMismatch = false,
-  adminWallet = null,
 }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAdmin = authUser?.role?.toLowerCase() === "admin";
-  const navItems = [
-    { label: "Home", to: "/" },
-    { label: "Login", to: "/login" },
-    { label: "Register", to: "/register" },
-    { label: "Dashboard", to: "/dashboard" },
-    ...(isAdmin ? [{ label: "Manage Claims", to: "/manage-claims" }] : []),
-  ];
-
-  const submitClaimItem = { label: "Submit Claim", to: "/submit-claim" };
+  const navItems = authUser
+    ? [
+        { label: "Home", to: "/" },
+        { label: "Dashboard", to: "/dashboard" },
+        ...(isAdmin ? [{ label: "Manage Claims", to: "/manage-claims" }] : []),
+        { label: "Submit Claim", to: "/submit-claim", highlight: true },
+      ]
+    : [
+        { label: "Home", to: "/" },
+        { label: "Login", to: "/login" },
+        { label: "Register", to: "/register" },
+      ];
+  const username = authUser?.name || authUser?.email || "";
+  const truncatedUsername = username.length > 14
+    ? `${username.slice(0, 11)}...`
+    : username;
+  const truncatedWallet = walletAddress
+    ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
+    : "";
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="navbar">
@@ -39,32 +46,69 @@ function Navbar({
           </div>
         </a>
 
+        <button
+          type="button"
+          className="navbar__menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          aria-controls="main-navigation"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         {/* Nav links */}
-        <nav className="navbar__nav" aria-label="Main navigation">
+        <nav
+          id="main-navigation"
+          className={`navbar__nav${isMenuOpen ? " navbar__nav--open" : ""}`}
+          aria-label="Main navigation"
+        >
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
+              onClick={closeMenu}
               className={({ isActive }) =>
-                `navbar__link${isActive ? " navbar__link--active" : ""}`
+                `navbar__link${item.highlight ? " navbar__link--claim" : ""}${isActive ? item.highlight ? " navbar__link--claim-active" : " navbar__link--active" : ""}`
               }
             >
-              {item.label}
+              {item.highlight ? "🩺 " : ""}{item.label}
             </NavLink>
           ))}
+        </nav>
 
-          {/* Submit Claim — highlighted CTA */}
-          <NavLink
-            to={submitClaimItem.to}
-            className={({ isActive }) =>
-              `navbar__link navbar__link--claim${isActive ? " navbar__link--claim-active" : ""}`
-            }
-          >
-            🩺 {submitClaimItem.label}
-          </NavLink>
-          {isAdmin && (
+        {/* Right-side actions */}
+        {authUser && (
+          <div className={`navbar__actions${isMenuOpen ? " navbar__actions--open" : ""}`}>
+            <span className="navbar__user-badge" title={username}>
+              <span className="navbar__badge-text">{truncatedUsername}</span>
+            </span>
+
+            {isConnected ? (
+              <span className="navbar__wallet-badge" title={walletAddress}>
+                <span className="navbar__badge-text">{truncatedWallet}</span>
+              </span>
+            ) : (
+              <button
+                type="button"
+                className="navbar__connect-btn"
+                onClick={onConnect}
+                disabled={isConnecting}
+              >
+                {isConnecting ? (
+                  <LoadingSpinner label="Connecting…" />
+                ) : (
+                  "Connect MetaMask"
+                )}
+              </button>
+            )}
+
+            {isAdmin && (
               <NavLink
                 to="/admin"
+                onClick={closeMenu}
                 className={({ isActive }) =>
                   `navbar__link navbar__link--admin${isActive ? " navbar__link--active" : ""}`
                 }
@@ -72,57 +116,7 @@ function Navbar({
                 Admin Panel
               </NavLink>
             )}
-        </nav>
 
-        {/* Right-side actions */}
-        <div className="navbar__actions">
-          {authUser && (
-            <span className="navbar__user-badge">
-              {authUser.name || authUser.email}
-            </span>
-          )}
-
-          <span
-            className={`navbar__network-badge${networkMismatch ? " navbar__network-badge--mismatch" : ""}`}
-          >
-            {networkName} {chainId ? `(${chainId})` : ""}
-          </span>
-
-          {networkMismatch && (
-            <button
-              type="button"
-              className="navbar__switch-btn"
-              onClick={onSwitchNetwork}
-              disabled={isConnecting}
-            >
-              {isConnecting ? (
-                <LoadingSpinner label="Switching…" />
-              ) : (
-                "Switch to Hardhat"
-              )}
-            </button>
-          )}
-
-          {isConnected ? (
-            <span className="navbar__wallet-badge">
-              {walletAddress.slice(0, 6)}…{walletAddress.slice(-4)}
-            </span>
-          ) : (
-            <button
-              type="button"
-              className="navbar__connect-btn"
-              onClick={onConnect}
-              disabled={isConnecting}
-            >
-              {isConnecting ? (
-                <LoadingSpinner label="Connecting…" />
-              ) : (
-                "Connect MetaMask"
-              )}
-            </button>
-          )}
-
-          {authUser && (
             <button
               type="button"
               className="navbar__logout-btn"
@@ -130,8 +124,8 @@ function Navbar({
             >
               Logout
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );

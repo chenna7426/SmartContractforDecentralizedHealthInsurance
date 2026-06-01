@@ -29,7 +29,8 @@
 }
 
 .home-hero__inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -171,7 +172,8 @@
 
 /* Feature cards */
 .home-features {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 4rem 1.5rem;
 }
@@ -202,7 +204,7 @@
 
 .home-feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1.25rem;
 }
 
@@ -297,7 +299,8 @@
 }
 
 .home-workflow__inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -316,7 +319,7 @@
 
 .home-workflow-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 1.25rem;
 }
 
@@ -360,7 +363,8 @@
 
 /* Notification banner */
 .home-notification {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 1.5rem auto 0;
   padding: 0 1.5rem;
 }
@@ -389,20 +393,21 @@
 
 /* Claim sections */
 .home-claims {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
 
 .home-claims__grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: start;
 }
 
-@media (max-width: 900px) {
-  .home-claims__grid { grid-template-columns: 1fr; }
+@media (min-width: 901px) {
+  .home-claims__grid { grid-template-columns: 1.2fr 1fr; }
 }
 
 .home-claims__full {
@@ -418,7 +423,8 @@
 }
 
 .ins-edu__inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -433,7 +439,7 @@
 /* ── Concept cards grid ── */
 .ins-concepts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.25rem;
   margin-bottom: 4rem;
 }
@@ -521,7 +527,7 @@
 
 .ins-journey-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 0;
 }
 
@@ -623,7 +629,7 @@
 
 .ins-blockchain-banner > div:nth-child(2) {
   flex: 1;
-  min-width: 220px;
+  min-width: min(100%, 220px);
 }
 
 .ins-blockchain-banner__title {

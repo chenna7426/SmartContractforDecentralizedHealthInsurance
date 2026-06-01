@@ -1,11 +1,13 @@
 .claims-page {
+  width: 100%;
   min-height: 100vh;
   background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
-  padding: 2rem 1.5rem 3rem;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem) 3rem;
 }
 
 .claims-page-inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -25,7 +27,7 @@
 .claims-layout {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
 }
 
 .claims-panel {
@@ -53,8 +55,8 @@
   padding-left: 1rem;
 }
 
-@media (max-width: 960px) {
+@media (min-width: 961px) {
   .claims-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
   }
 }

@@ -1,11 +1,13 @@
 .wallet-page {
+  width: 100%;
   min-height: 100vh;
   background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
-  padding: 2rem 1.5rem 3rem;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem) 3rem;
 }
 
 .wallet-inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -13,7 +15,7 @@
   margin-top: 1.5rem;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
 }
 
 .wallet-card {

@@ -1,4 +1,6 @@
 .policy-card {
+  width: 100%;
+  min-width: 0;
   padding: 1.25rem;
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);

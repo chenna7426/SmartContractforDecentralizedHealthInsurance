@@ -1,10 +1,11 @@
 /* ─── Login page ─────────────────────────────────────────────── */
 .login-page {
+  width: 100%;
   min-height: calc(100vh - 68px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1.5rem;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 3vw, 1.5rem);
   background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
 }
 
@@ -12,7 +13,7 @@
   width: 100%;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0;
   border-radius: 28px;
   overflow: hidden;
@@ -20,14 +21,14 @@
   animation: fadeUp .5s ease both;
 }
 
-@media (max-width: 720px) {
-  .login-container { grid-template-columns: 1fr; }
+@media (min-width: 721px) {
+  .login-container { grid-template-columns: 1fr 1fr; }
 }
 
 /* Left panel */
 .login-panel {
   background: linear-gradient(145deg, #1e3a8a 0%, #1d4ed8 60%, #2563eb 100%);
-  padding: 3rem 2.5rem;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +115,7 @@
 /* Right panel / form */
 .login-form-panel {
   background: #fff;
-  padding: 3rem 2.5rem;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
