@@ -116,6 +116,45 @@ export const connectWallet = async () => {
   };
 };
 
+export const connectWalletWithProvider = async (externalProvider) => {
+  if (!externalProvider) {
+    throw new Error("No provider supplied");
+  }
+
+  const provider = new ethers.BrowserProvider(externalProvider);
+  const signer = await provider.getSigner();
+  const address = await signer.getAddress();
+  const network = await provider.getNetwork();
+
+  ensureContractConfig();
+
+  if (Number(network.chainId) !== HARDHAT_CHAIN_ID) {
+    try {
+      // Attempt to switch the provider's network to Hardhat if supported
+      if (externalProvider.request) {
+        await externalProvider.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: HARDHAT_CHAIN_ID_HEX }],
+        });
+      }
+    } catch (err) {
+      // Fallback to existing logic which may request chain add
+      await switchToHardhatNetwork();
+    }
+  }
+
+  const contract = new ethers.Contract(DYNAMIC_CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+
+  return {
+    provider,
+    signer,
+    contract,
+    address,
+    chainId: Number(network.chainId),
+    networkName: network.name,
+  };
+};
+
 export const getReadOnlyContract = () => {
   ensureContractConfig();
   return new ethers.Contract(DYNAMIC_CONTRACT_ADDRESS, CONTRACT_ABI, getProvider());

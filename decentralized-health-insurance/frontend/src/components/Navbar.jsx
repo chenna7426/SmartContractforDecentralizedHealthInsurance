@@ -100,7 +100,7 @@ function Navbar({
                 {isConnecting ? (
                   <LoadingSpinner label="Connecting…" />
                 ) : (
-                  "Connect MetaMask"
+                  "Connect Wallet"
                 )}
               </button>
             )}

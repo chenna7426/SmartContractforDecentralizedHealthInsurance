@@ -14,6 +14,7 @@ import SubmitClaim from "./Pages/SubmitClaim";
 import {
   approveClaimOnChain,
   connectWallet,
+  connectWalletWithProvider,
   getInsuranceBalance,
   rejectClaimOnChain,
   submitClaimOnChain,
@@ -21,6 +22,8 @@ import {
   getOnChainClaimStatus,
   getAdminWallet,
 } from "./services/blockchainService";
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import { ADMIN_WALLET } from "./config";
 
 const SESSION_KEY = "dhi_session";
@@ -218,24 +221,48 @@ function AppContent() {
     setMessage({ type: "", text: "" });
 
     try {
-      const result = await connectWallet();
+      // Use Web3Modal to allow WalletConnect (QR) and injected wallets
+      const providerOptions = {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            // Replace with your own Infura ID or RPC if needed
+            infuraId: "" // OPTIONAL: add INFURA ID or leave empty to use default
+          }
+        }
+      };
+
+      const web3Modal = new Web3Modal({ providerOptions });
+      let externalProvider = null;
+
+      try {
+        externalProvider = await web3Modal.connect();
+      } catch (modalErr) {
+        // If modal was closed or failed, fallback to injected MetaMask
+        externalProvider = null;
+      }
+
+      const result = externalProvider
+        ? await connectWalletWithProvider(externalProvider)
+        : await connectWallet();
+
       setWalletAddress(result.address);
       setContract(result.contract);
       setProvider(result.provider);
       setNetworkName(result.networkName);
       setChainId(result.chainId);
-      
+
       const adminAddress = await getAdminWallet(result.contract);
       const resolvedAdminWallet = ADMIN_WALLET?.trim() || adminAddress || getStoredAdminWallet() || (authUser?.role?.toLowerCase() === "admin" ? result.address : "");
       const storedValue = storeAdminWallet(resolvedAdminWallet);
       setAdminWallet(storedValue);
       setIsAdminWalletConnected(isAdminWallet(result.address, storedValue));
-      
+
       await loadInsuranceBalance();
       showToast("success", "Wallet connected", `Connected to ${result.address}`);
     } catch (error) {
       if (error?.code === 4001) {
-        showToast("error", "Connection rejected", "MetaMask connection was rejected.");
+        showToast("error", "Connection rejected", "Wallet connection was rejected.");
         return;
       }
 
